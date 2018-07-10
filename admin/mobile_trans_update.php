@@ -1,0 +1,100 @@
+<?php
+       
+       session_start();
+       if(!isset($_SESSION['session_id']))
+          header("Location:admin_login.php");
+       
+?>
+<html>
+       <head>
+              <title>Admin Panel</title>
+       </head>
+       <body>
+              <form action="" method="post">
+                   <table width="40%" bgcolor="A56883" align="center">
+                           <tr> 
+                               <td colspan=2><center><font size="4">Update</font></center></td>        
+                           </tr>
+                           <?php
+                                 $id=$_GET['id'];
+                                 include_once'connectivity.php';
+                           try{
+                              $database=new Connection();
+                              $db=$database->openConnection();
+                              $stm=$db->prepare("select * from mobile_transaction where mobile_payment_transaction_id=:id");
+                              $stm->bindParam(":id",$id);
+                              $stm->execute();
+                              $stm->setFetchMode(PDO::FETCH_ASSOC);
+                              while($data=$stm->fetch())
+                                 {
+                                          $id=$data['mobile_payment_transaction_id'];
+                                          $mobile=$data['recharged_mobile_no'];
+                                          $operator=$data['recharged_operator'];
+                                          $circle=$data['recharged_circle'];
+                                          $amount=$data['recharged_amount'];
+                                          $payment_mode=$data['payment_mode'];
+                                          $time=$data['time'];
+                                          $date=$data['date'];
+                                 }                              
+                            }
+                          catch(PDOExecption $e)
+                            {
+                              echo "there is some problem in connection";
+                            }
+                           ?>
+                         <tr>
+                            <td><center>Transaction id</center><td>
+                            <td><center><input type="text" name="id" value="<?php echo $id;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Mobile no</center><td>
+                            <td><center><input type="text" name="mobile" value="<?php echo $mobile;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Operator</center><td>
+                            <td><center><input type="text" name="operator" value="<?php echo $operator;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Circle</center><td>
+                            <td><center><input type="text" name="circle" value="<?php echo $circle;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Recharge money</center><td>
+                            <td><center><input type="text" name="amount" value="<?php echo $amount;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Payment mode</center><td>
+                            <td><center><input type="text" name="payment" value="<?php echo $payment_mode;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Time</center><td>
+                            <td><center><input type="text" name="time" value="<?php echo $time;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td><center>Date</center><td>
+                            <td><center><input type="text" name="date" value="<?php echo $date;?>"></center></td>
+                         </tr>
+                         <tr>
+                            <td colspan=2><center><input type="submit" name="update"></center></td>
+                         </tr>
+                   </table>
+              </form>
+              <?php
+                       if(isset($_POST['update']))
+                            {
+                                 $trans_id=$_POST['id'];
+                                 $mobile=$_POST['mobile'];
+                                 $operator=$_POST['operator'];
+                                 $circle=$_POST['circle'];
+                                 $amount=$_POST['amount'];
+                                 $payment=$_POST['payment'];
+                                 $time=$_POST['time'];
+                                 $date=$_POST['date'];
+                                 $sql = "UPDATE mobile_transaction SET mobile_payment_transaction_id = :id, recharged_mobile_no = :mobile,recharged_operator= :operator,recharged_circle = :circle,recharged_amount = :amount,payment_mode = :payment,time = :time ,date =:date WHERE mobile_payment_transaction_id= :id";
+                                 $stm=$db->prepare($sql);
+                                 $stm->execute(array(':id' => $trans_id,':mobile' => $mobile,':operator' => $operator,':circle' => $circle,':amount' => $amount,':payment' => $payment,':time' => $time,':date'=> $date,':id' => $trans_id));  
+                                 header("Location:index.php");
+                            }
+              ?>
+       </body>
+</html>
