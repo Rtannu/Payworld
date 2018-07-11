@@ -62,10 +62,29 @@ This repository contains following files-
 ### Registration page
   ![Registration page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2015:40:52.png)
   
-### Customer account page
-  ![Customer account page](https://github.com/Rtannu/eCommerce/blob/master/website_pages/Customer_Account_page.png)
+### Recharge mobile page
+  ![Customer account page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:14:03.png)
   
-
+### Profile page
+  ![profile page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:17:16.png)
+  
+### password update page
+  ![password update page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:25:12.png)
+  
+### Admin login page
+  ![amdin login page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:33:28.png)
+  
+### Admin home page
+  ![admin panel page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:36:43.png)
+  
+### Admin panel page
+   ![Admin panel page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:39:52.png)
+   
+### Update page
+   ![Update page](https://github.com/Rtannu/Payworld/blob/master/screenshot/Screenshot%20from%202018-05-30%2016:47:53.png)
+  
+  
+  
   
   
   
